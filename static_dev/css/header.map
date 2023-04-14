@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "header.css",
+	"sources": [
+		"../scss/header.scss"
+	],
+	"sourcesContent": [
+		"#col-menu {\n    background-color: linear-gradient(to right, rgba(255, 0, 0, 0), rgb(172, 163, 163));\n\n}\n\n#submenu1 {\n    font-family: 'Segoe UI semibold';\n}"
+	],
+	"names": [],
+	"mappings": ";AAAA,AAAA,SAAS,CAAC;EACN,gBAAgB,EAAE,sDAAiE;CAEtF;;;AAED,AAAA,SAAS,CAAC;EACN,WAAW,EAAE,mBAAmB;CACnC"
+}

@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% block title %}Tienda{% endblock %}
+{% load static %}
+
+{% block tienda %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+
+ 
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id pedido</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">CUIL</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Estado del pedido</th>
+            <th scope="col">Estado de saldo</th>
+        </tr>
+    </thead>
+    <tbody>
+
+            {% if request.user.is_staff %}
+                {% for pedido in pedidos %}
+                        <tr>
+                            <th scope="row"><a href="{% url 'ver' pedido.id_pedido %}">{{pedido.id_pedido}}</a></th>
+                            <td>{{pedido.id_cliente.nombre}} {{pedido.id_cliente.apellido}}</td>
+                            <td>{{pedido.id_cliente.cuit}}</td>
+                            <td>{{pedido.descripcion}}</td>
+                            <td>{{pedido.estado_pedido}}</td>
+                            <td>{{pedido.estado_saldo}}</td>
+                        </tr>
+                    {%endfor%}
+            {% endif %}
+            {% if request.user.is_active %}
+                {% for pedido in pedidos %}
+                    {% if user.cuit == pedido.id_cliente.cuit %}
+                        <tr>
+                            <th scope="row"><a href="{% url 'ver' pedido.id_pedido %}">{{pedido.id_pedido}}</a></th>
+                            <td>{{pedido.id_cliente.nombre}} {{pedido.id_cliente.apellido}}</td>
+                            <td>{{pedido.id_cliente.cuit}}</td>
+                            <td>{{pedido.descripcion}}</td>
+                            <td>{{pedido.estado_pedido}}</td>
+                            <td>{{pedido.estado_saldo}}</td>
+                        </tr>
+                    {%endif%}
+                {%endfor%}
+                {% else %}    
+                <h1> Usted no tiene pedidos registrados.</h1>
+
+            {% endif %} 
+    </tbody>
+    </table>
+            
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-left: 5%">
+        
+        {% for pedido in pedidos %} 
+            <button type="button" class="btn btn-primary agregar">{{pedido.id_pedido}} - Agregar</button>    
+            <input type="submit" hidden class="col-12 vervalor" value="{{pedido.estado_pedido}}"/>
+            <input type="submit" hidden class="col-12 verid" value="lucas_{{pedido.id_pedido}}">
+            
+        {%endfor%}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script = "text/javascript">
+/*jslint browser: true*/
+/*jslint plusplus: true*/
+/*global FormData: false */
+/*global $, jQuery, alert, console*/
+/*..............................................................................................
+... PARA VALIDAR LOS DATOS .....................................................
+.............................................................................................*/
+var csrftoken = $.cookie('csrftoken');
+function csrfSafeMethod(method) {
+    "use strict";
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+function AgregarI(cada_pedido_id, valor) {
+    "use strict";
+    console.log("En funcion AGREGAR_I: ", cada_pedido_id, valor)
+    $.ajax({
+        beforeSend : function (xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        },
+        url : "/tienda/agregar/",
+        type : "GET",
+        data : { cada_pedido_id:cada_pedido_id, valor:valor},
+        
+        success : function (json) {
+            console.log(json[0].idpedido.toString())
+            console.log(json[0].cantida.toString())
+            localStorage.setItem(json[0].idproducto.toString(), json[0].cantida.toString());
+            //location.reload();
+            console.log("ok++++++++++++++++++++++++")
+        },
+        error : function (xhr, errmsg, err) {
+            console.log('Error en carga de respuesta');
+        }
+        
+    });
+
+} 
+
+/* Cuando sobre el boton agregar se haga click */
+$('.agregar').click(function(event) {
+    "use strict";
+    /*Este prevent defatult es porque no todos los exploradores funcionan de la misma manera y evita la propagacion de eventos*/
+    event.preventDefault();
+    /*-- Declaramos variables local(LET) - Con $ y () podemos acceder al DOM. This encuentra lo que estamos buscando en este caso '.agregar'.
+    Va a buscar del elemento padre hasta encontar el '.verid' y obtenga su valor. Luego hace lo mismo con '.vervalor' --*/
+    let cada_pedido_id = $(this).parent().find('.verid').val()
+    let valor = $(this).parent().find('.vervalor').val();
+    console.log("ID_PEDIDO: ",cada_pedido_id)
+    console.log("VALOR: ",valor)
+
+
+    //PASO 1: Remuevo todo item que no inicia con utn_
+    //cada valor tiene el valor de 1, según lo que esta definido en '.valor'
+
+    let i;
+    for(i = 0; i < localStorage.length; i++){
+        let clave_eliminar = localStorage.key(i);
+        console.log(typeof clave_eliminar);
+        console.log(clave_eliminar);
+        if(!clave_eliminar.startsWith("lucas_")){
+            console.log("retorna NO verdadero !!!!!!!!!!!!!");
+            localStorage.removeItem(clave_eliminar);
+            console.log("retorna NO verdadero !!!!!!!!!!!!!");
+        }
+    }
+
+    //PASO 2: Si es la primera vez que selecciono el valor me quedo con "valor=1"
+    //Si ya existia un valor en la base tomo ese valor en lugar de 1
+    for(i = 0; i < localStorage.length; i++){
+        let clave = localStorage.key(i);
+        let el_valor = localStorage[clave];
+        if(clave == cada_pedido_id){
+            console.log("-----1112------")
+            console.log(clave);
+            console.log(valor);
+            valor = el_valor;
+            console.log("-----1112------")
+        }else{
+            console.log("no hay coincidenciaaaa");
+        }   
+    }
+
+    AgregarI(cada_pedido_id, valor);
+});
+
+</script>
+{% endblock %}

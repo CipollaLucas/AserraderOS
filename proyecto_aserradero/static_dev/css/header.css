@@ -1,0 +1,14 @@
+/* line 1, ../../../cipolla.lucas/Desktop/Diplo_Django/proyecto_aserradero/proyecto_aserradero/static/scss/header.scss */
+.menu-lateral {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* line 8, ../../../cipolla.lucas/Desktop/Diplo_Django/proyecto_aserradero/proyecto_aserradero/static/scss/header.scss */
+p {
+  color: black;
+}
+
+/*# sourceMappingURL=header.css.map */

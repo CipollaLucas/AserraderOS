@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block headers %}
+{% endblock %}
+
+{% block contenedor %}
+    <!-- HEADER -->
+
+    <header>
+        <!-- NAV para el responsive -->
+        <div class="navbar navbar-default visible-xs">
+            <button type="button" class="navbar-toggle collapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        <a href="{% url 'home' %}" class="navbar-brand">Caparros Aserradero</a>
+    </div>
+    <!-- NAV para el desktop -->
+        <nav class="sidebar">
+            <div class="navbar-collapse" id="navbar-collapse">
+            <div class="site-header hidden-xs">
+                <a class="site-brand" href="{% url 'home' %}" title="">
+                    <img class="img-responsive site-logo" alt="" src="">
+                    Aserradero Caparros
+                </a>
+                <p> 60 años de trayectoria</p>
+            </div>
+            <!-- Contenido del menu lateral -->
+                        <div>
+
+                            <ul class="nav menu-lateral">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Clientes
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                      <li><a class="dropdown-item" href="{% url 'registro' %}">REGISTRO</a></li>
+                                      <li><a class="dropdown-item" href="{% url 'login' %}">LOGIN</a></li>
+                                      {% if request.user.is_active %}
+                                      <li><a class="dropdown-item" href="{% url 'logout' %}">LOGOUT</a></li>
+                                        {% endif %}
+                                        {% if request.user.is_staff %}
+                                        <li><a href="{% url 'lista_usuarios' %}">USUARIOS</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <!-- Fin del dropdown-->
+                            </ul>
+                        </div>
+
+
+            </div>
+            <!-- FIN DROPDOWN -->
+                <ul class="nav menu-lateral">
+                    <li><a href="{% url 'home' %}" title="">Home</a></li>
+                    <li><a href="{% url 'about' %}" title="">Sobre nosotros</a></li>
+                    {% if request.user.is_staff %}
+                    <li><a href="tienda/cargar" title="">Cargar pedido</a></li>
+                    {% endif %}
+                    <li><a href="servicios" title="">Servicios</a></li>
+                    <li><a href="contacto" title="">Contacto</a></li>
+                    <li><a href="pedidos" title="">Pedidos</a></li>
+                    <!--<li><a href="{% url 'localstorage' %}" title="">localstorage</a></li>-->
+                </ul>
+               <!-- <li class="nav-item  ">
+                    <a class="nav-link  " href="{% url 'usar_ajax' %}"   role="button"   aria-expanded="false">
+                    Usar ajax
+                    </a>
+                
+                </li>-->
+
+                <nav class="nav-footer">
+                    <p class="nav-footer-social-buttons">
+                    <a class="fa-icon" href="https://www.instagram.com/aserraderocaparros" title="">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a class="fa-icon" href="https://www.facebook.com/DaliMueblesDePino" title="">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="fa-icon" href="https://www.whatsapp.com/+542323647186" title="">
+                        <i class="fa fa-whatsapp"></i>
+                    </a>
+
+                    </p>
+                    <p>© Creado por CangrejoSolutions </p>
+                    <p> Lucas Cipolla | 2022 </p>
+                </nav>
+            </div>
+        </nav>
+    </header>
+
+
+
+{% block content %}{% endblock %}
+{% block contacto %}{% endblock %}
+{% block usuarios %}{% endblock %}
+{% block servicios %}{% endblock %}
+{% block tienda %}{% endblock %}
+{% block about %}{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+
+
+
+
+{% endblock %}

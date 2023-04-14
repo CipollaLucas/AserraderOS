@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block ver_pedidos %}
+
+<div class="container">
+<div class="row">
+    <div class="col-12">
+        {% for pedido in pedidos %}
+            <div class="row">
+                <div class="col">
+                    <li>ID pedido: {{pedido.id_pedido}}</li>
+                    <li>Cliente: {{pedido.id_cliente}}</li>
+                    <li>Estado del pedido: {{pedido.estado_pedido}}</li>
+                </div>
+
+            </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+</div>
+
+
+
+{% endblock %}

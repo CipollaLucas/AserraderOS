@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block title %}Listado de usuarios{% endblock %}
+{% load static %}
+
+{% block usuarios %}
+
+    {% if object_list %}
+
+    <div class="container">
+
+        {% for usuario in object_list %}
+        <div class="row">
+        {{usuario.id}}
+        {{usuario.cuit}}
+        {{usuario.username}}
+        {{usuario.nombre}}
+        {{usuario.apellido}}
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+    <h1> No exiten usuarios registrados.</h1>
+</div>
+    {% endif %}
+
+{% endblock %}
+{% block javascript %}
+
+
+{% endblock %}

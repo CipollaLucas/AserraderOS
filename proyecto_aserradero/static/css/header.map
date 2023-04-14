@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "header.css",
+	"sources": [
+		"../scss/header.scss"
+	],
+	"sourcesContent": [
+		".menu-lateral {\n    display: flex;\n    flex-wrap: wrap;\n    flex-direction: column;\n    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n}\n\np {\n    color:black;    \n}\n"
+	],
+	"names": [],
+	"mappings": ";AAAA,AAAA,aAAa,CAAC;EACV,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,+CAA+C;CAC/D;;;AAED,AAAA,CAAC,CAAC;EACE,KAAK,EAAC,KAAK;CACd"
+}

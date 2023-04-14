@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% block title %}Tienda{% endblock %}
+{% load static %}
+
+{% block tienda %}
+
+<div class="container">
+
+            <div class="row"><h3><span class="label label-primary" style="margin-left: 100px;"> Cargar aqui el pedido</span></h3></div>    
+            <form action="{% url 'cargar' %}" method="post" enctype="multipart/form-data" style="margin-left: 100px;"> {% csrf_token %}
+                <div class="col">
+                                <div class="form-outline">
+                                    <label><h4><span class="label label-default">ID pedido</span></h4></label>
+                                        <div class="input-group rounded"> {{form.id_pedido}}</div>
+                                </div>
+                                <div class="form-group">
+                                    <label><h4><span class="label label-default">Cliente</span></h4></label>
+                                    <div class="input-group rounded"> {{form.id_cliente}}</div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label><h4><span class="label label-default">Descripción</span></h4></label>
+                                    <div class="input-group rounded"> {{form.descripcion}}</div>
+                                </div>
+                                <div class="form-group">
+                                    <label><h4><span class="label label-default">Foto del pedido</span></h4></label>
+                                        <div class="input-group rounded"> {{form.descri_foto}}</div>
+                                </div>
+                                <div class="form-group">
+                                    <label><h4><span class="label label-default">Monto</span></h4></label>
+                                    <div class="input-group rounded"> {{form.monto}}</div>
+                                    <label><h4><span class="label label-default">Estado saldo</span></h4></label>
+                                    <div class="input-group rounded"> {{form.estado_saldo}}</div>
+                                </div>
+                                <button type="submit"  class=" col-12 btn btn-danger">Aceptar</button>
+                </div>
+            </form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/jquery.js' %}"> </script>
+<script></script>
+{%endblock%}
+
+

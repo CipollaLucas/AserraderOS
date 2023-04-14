@@ -1,0 +1,11 @@
+/* line 1, ../../Documents/Python/Python_virtual/primer_app/primer_app/static_dev/scss/header.scss */
+#col-menu {
+  background-color: linear-gradient(to right, rgba(255, 0, 0, 0), #aca3a3);
+}
+
+/* line 6, ../../Documents/Python/Python_virtual/primer_app/primer_app/static_dev/scss/header.scss */
+#submenu1 {
+  font-family: 'Segoe UI semibold';
+}
+
+/*# sourceMappingURL=header.css.map */

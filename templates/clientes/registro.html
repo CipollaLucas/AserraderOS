@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block title %}Registro de usuario{% endblock %}
+{% load static %}
+
+{% block usuarios %}
+
+<div class="container">
+		<div class="row"><h3><span class="label label-primary" style="margin: 10%;"> Registro de usuario </span></h3></div>
+		<div class="card-body">
+		<form method="post"> 
+			{% csrf_token %}
+			{{	form.as_p	}}
+			
+				<button type="submit" class="btn btn-outline-success"> Registrar </button>
+				<button class="btn btn-outline-danger" ><a href="{% url 'home' %}"> Cancelar </a></button>
+			
+
+		</form>
+	</div>
+
+		
+</div>
+
+
+{% endblock %}
+{% block javascript %}
+<script src="http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+
+	<script>
+		$("#id_fecha").css({'display':'none'});
+		//$("#id_fecha").parent().find("label").css({'display':'none'});
+		$("#id_estado_respuesta").css({'display':'none'});
+		$("#id_estado_respuesta").parent().find("label").css({'display':'none'});
+		
+		
+		$("#formulario_contacto li").css({'list-style':'none'});
+ 
+		//$("#formulario_contacto li label").css({'width':"100%", 'text-align':'center',});
+		//$("#formulario_contacto li input").css({'width':"100%", 'text-align':'center',});
+
+		$("input").css({'width':"100%", 'text-align':'center', 'margin-bottom':'7px'});
+		$("textarea").css({'width':"100%", 'text-align':'center',});
+
+
+		$("#id_nombre").attr("placeholder", "Nombre");
+		$("#id_descripcion").attr("placeholder", "Descripcion");
+		$("#id_mail").attr("placeholder", "Mail");
+		$("#id_telefono").attr("placeholder", "Teléfono");
+		$("#id_captcha_1").attr("placeholder", "Captcha");
+	</script>
+
+	
+{% endblock %}

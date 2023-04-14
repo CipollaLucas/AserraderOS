@@ -1,0 +1,16 @@
+.menu-lateral {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    color:black;    
+}
+body {
+    
+    background: rgb(34,193,195);
+    background: linear-gradient(349deg, rgba(34,193,195,1) 0%, rgba(236,233,227,1) 100%);
+    
+}

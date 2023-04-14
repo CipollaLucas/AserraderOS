@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+      <div class="col-12 prueba" style="padding-top:200px;">
+
+      </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+      <div class="col-12 prueba">
+        <section id="todos_los_productos" class ="row" >
+            <h2>Seleccionar pedido</h2>
+            <hr/>
+            <div id="contenedor_filtros" class="row">
+               <div id="filtros_productos"  class="col-xs-12">
+                   <form id="searchr-form"   action="" method="post" >{% csrf_token  %}
+                       <div class="campo_busqueda col-xs-12 "  >
+                           {{ search }}
+                           <input type="button" id="boton_prod" value="Ver datos"/>
+                       </div>
+                    </form>
+               </div>
+            </div>
+            <div id="contenedor_filtrado" class="col-xs-10 col-sm-offset-2 col-sm-8  
+                                              col-md-offset-4 col-md-4 "></div>
+        </section>
+      </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-12 prueba" style="padding-bottom: 250px;">
+       
+    </div>
+</div>
+</div>
+  <div class="container">
+      <div class="row">
+          <div class="col-12 prueba" style="padding-top:200px;">
+ 
+          </div>
+      </div>
+  </div>
+{% endblock  %}
+{% block scripts %}
+    <!-- ✅ load jQuery ✅ -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- ✅ load jQuery UI ✅ -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+      integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+<script type="text/javascript">
+  /*Toma el elemento del fornt end. */
+  $( "#id_querycom" ).autocomplete({
+    /*Aca le pasamos la funcion que va a utilizar */
+      source:"/buscar_pedido/"
+  });
+</script>
+
+
+{% endblock %}
+ 
