@@ -2,10 +2,10 @@
 
 from django.shortcuts import render
 from django.http import HttpResponse
-from pedidos.models import Order
 
 
-# Create your views here.
+
+#Acá encontramos nuestras templates con sus referencias 
 
 
 def home(request):

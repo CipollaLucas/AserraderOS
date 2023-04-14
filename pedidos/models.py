@@ -3,33 +3,7 @@ from clientes.models import ClienteUsuario
 from django.utils.html import format_html
 
 
-# Create your models here.
-"""class PedidoManager(models.Manager):
-    def get_queryset(self, cuit):
-        return super().get_queryset().filter(id_cliente=cuit)"""
-        
-
-"""class Cliente(models.Model):
-    usuario              = models.OneToOneField(User, blank=False, null=True, on_delete=models.CASCADE)
-    nombre               = models.CharField(max_length=50, default='')
-    apellido             = models.CharField(max_length=50, default='')
-    descripcion          = models.CharField(max_length=200, default='NO TIENE DECRIPCION O ES NUEVO')
-    fecha_nacimiento     = models.DateField(blank=True, null=True)
-    pais                 = models.CharField(max_length=30, blank=True)
-    provincia            = models.CharField(max_length=40, blank=True)
-    ciudad               = models.CharField(max_length=40, blank=True)
-    domicilio            = models.CharField(max_length=80, blank=True)
-    codigo_postal        = models.CharField(max_length=50, blank=True)
-    telefono             = models.CharField(max_length=30, blank=True)
-    celular              = models.CharField(max_length=30, blank=True)
-    documento            = models.CharField(max_length=30, blank=True)
-    cuit                 = models.CharField(max_length=30, blank=True)
-
-
-    def __str__(self):
-        return self.cuit
-
-"""
+#Creamos los modelos correspondientes
 
 class Order(models.Model):
     # Acá agregamos una tupla para identificar el estado del pedido.
